@@ -44,13 +44,11 @@ jobs:
         pwd
         ls -lah
 
-        #./pip3.* install --upgrade 'maestral[gui]'
         ./pip3.* install autosubsync
         ./python3.* -m pip install --upgrade pip
 
     - name: Make AppImage
       run: |
-        #version_Maestral="1.9.3"
         version_Autosubsync="1.0.1"
 
         set -x
@@ -63,20 +61,14 @@ jobs:
 
         #find . | grep ".png"
         #find . | grep ".svg"
-        #cp opt/python3.*/share/icons/hicolor/512x512/apps/maestral.png .
         mv python.png Autosubsync.png
 
         #find . | grep ".desktop"
-        #cp opt/python3*/share/applications/maestral.desktop .
-        #cat maestral.desktop
         mv python*.desktop Autosubsync.desktop
         cat Autosubsync.desktop
 
         sed -i "s/Name=.*/Name=Autosubsync-$version_Autosubsync/" Autosubsync.desktop
         sed -i "s/Icon=python/Icon=Autosubsync/" Autosubsync.desktop
-
-        #mv maestral.desktop Maestral.desktop
-        #cat Maestral.desktop
         cat Autosubsync.desktop
 
         pwd
@@ -113,4 +105,4 @@ jobs:
           verbose: true
           #tags: true
           draft: false
-          default_release_name: "Maestral v in AppImage"
+          default_release_name: "Autosubsync v in AppImage"
