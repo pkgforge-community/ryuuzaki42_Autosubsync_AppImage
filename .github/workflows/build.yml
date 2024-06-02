@@ -75,13 +75,7 @@ jobs:
         ls -lah
 
         cd ../
-        #mv AppRun squashfs-root/
-        echo '#!/bin/bash
-        HERE="$(dirname "$(readlink -f "${0}")")"
-
-        cd "$HERE"/opt/python3.*/bin/
-        ./autosubsync "$@"' > squashfs-root/AppRun
-        chmod +x squashfs-root/AppRun
+        mv AppRun squashfs-root/
 
         mv README.md squashfs-root/
         ls -lah squashfs-root/
