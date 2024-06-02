@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "\nRunning: autosubsync $@"
+
 HERE="$(dirname "$(readlink -f "${0}")")"
 
 count_Paramets=$#
