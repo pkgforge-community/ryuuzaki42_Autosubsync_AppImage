@@ -15,4 +15,10 @@
 ```
 See `./Autosubsync*_JB.AppImage --help` for more details.
 
+---
 https://github.com/oseiskar/autosubsync
+
+https://pypi.org/project/autosubsync/
+
+---
+https://github.com/oseiskar/autosubsync/tags
