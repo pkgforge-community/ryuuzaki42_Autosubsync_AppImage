@@ -45,7 +45,7 @@ jobs:
         ls -lah
 
         #./pip3.* install --upgrade 'maestral[gui]'
-        #./pip3.* install autosubsync
+        ./pip3.* install autosubsync
         ./python3.* -m pip install --upgrade pip
 
     - name: Make AppImage
