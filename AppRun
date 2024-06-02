@@ -7,7 +7,7 @@ echo -e "\ncount_Paramets $count_Paramets"
 all_Parameters=$@
 echo -e "all_Parameters $all_Parameters\n"
 
-if [ $count_Paramets -lt 3 ]; then
+if [ $count_Paramets -lt 3 ]; then # If has less then 3 parameter, like --help
     "$HERE"/opt/python3.*/bin/autosubsync "$all_Parameters"
 else
     #last_3_Paramets=$(echo "$all_parameters" | rev | cut -d ' ' -f1-3 | rev)
@@ -21,6 +21,7 @@ else
     subtitle_file=$PWD/${@: -2:1} # Second last parameter
     output_file=$PWD/${@: -1:1} # Last parameter
 
+    echo "Final Parameters: others_Paramets video_file subtitle_file output_file"
     echo "Final Parameters: $others_Paramets $video_file $subtitle_file $output_file"
 
     if [ "$others_Paramets" == '' ]; then
