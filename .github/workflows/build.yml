@@ -45,12 +45,14 @@ jobs:
         ls -lah
 
         #./pip3.* install --upgrade 'maestral[gui]'
-        ./pip3.*pip install autosubsync
+        #./pip3.* install autosubsync
         ./python3.* -m pip install --upgrade pip
 
     - name: Make AppImage
       run: |
-        version_Maestral="1.9.3"
+        #version_Maestral="1.9.3"
+        version_Autosubsync="1.0.1"
+
         set -x
         cd squashfs-root/
         pwd
