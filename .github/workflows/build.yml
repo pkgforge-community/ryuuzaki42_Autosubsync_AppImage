@@ -44,7 +44,8 @@ jobs:
         pwd
         ls -lah
 
-        ./pip3.* install --upgrade 'maestral[gui]'
+        #./pip3.* install --upgrade 'maestral[gui]'
+        ./pip3.*pip install autosubsync
         ./python3.* -m pip install --upgrade pip
 
     - name: Make AppImage
