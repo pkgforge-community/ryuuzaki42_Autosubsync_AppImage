@@ -1,16 +1,9 @@
 
-# Maestral_AppImage
+# Autosubsync_AppImage
 
-## Repository: https://github.com/ryuuzaki42/maestral_AppImage
+## Repository: https://github.com/ryuuzaki42/Autosubsync_AppImage
 
 ## Run
-    ./maestral*.AppImage
+    ./Autosubsync*_JB.AppImage
 
-### With GUI
-    ./maestral*.AppImage gui
-
-https://maestral.app/
-
-https://github.com/samschott/maestral
-
-https://github.com/samschott/maestral/releases
+https://github.com/oseiskar/autosubsync
