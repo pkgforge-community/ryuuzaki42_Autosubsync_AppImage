@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "\nRunning: autosubsync $@"
+echo -e "\nRunning: autosubsync $@"
 
 HERE="$(dirname "$(readlink -f "${0}")")"
 
