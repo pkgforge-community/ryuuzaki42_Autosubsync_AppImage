@@ -58,19 +58,23 @@ jobs:
         pwd
         ls -lah
 
-        rm -v python* .DirIcon AppRun
+        #rm -v python* .DirIcon AppRun
+        rm -v .DirIcon AppRun
 
         #find . | grep ".png"
         #find . | grep ".svg"
-        cp opt/python3.*/share/icons/hicolor/512x512/apps/maestral.png .
+        #cp opt/python3.*/share/icons/hicolor/512x512/apps/maestral.png .
+        mv python.png Autosubsync.png
 
         #find . | grep ".desktop"
-        cp opt/python3*/share/applications/maestral.desktop .
-        cat maestral.desktop
+        #cp opt/python3*/share/applications/maestral.desktop .
+        #cat maestral.desktop
+        mv python*.desktop Autosubsync.desktop
+        cat Autosubsync.desktop
 
-        sed -i "s/Name = Maestral/Name = Maestral-$version_Maestral/" maestral.desktop
-        mv maestral.desktop Maestral.desktop
-        cat Maestral.desktop
+        sed -i "s/Name = Maestral/Name = Maestral-$version_Maestral/" Autosubsync.desktop
+        #mv maestral.desktop Maestral.desktop
+        #cat Maestral.desktop
 
         pwd
         ls -lah
@@ -83,7 +87,7 @@ jobs:
         ARCH=x86_64 ./appimagetool-x86_64.AppImage squashfs-root/
         ls -lah
         
-        fileName=$(ls Maestral*.AppImage)
+        fileName=$(ls Autosubsync*.AppImage)
         echo "fileName: $fileName"
         fileNameNew=$(echo "$fileName" | sed 's/.AppImage//')
         mv "$fileName" "${fileNameNew}-1_JB.AppImage"
@@ -99,7 +103,7 @@ jobs:
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-          file: "Maestral*.AppImage; Maestral*.md5"
+          file: "Autosubsync*.AppImage; Autosubsync*.md5"
           #delete_file: "random-name-*.txt;random-*.txt"
           release_id: ${{ steps.create_release.outputs.id }}
           #overwrite: true
