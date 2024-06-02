@@ -13,10 +13,10 @@ if [ $count_Paramets -lt 3 ]; then # If has less then 3 parameter, like --help
     "$HERE"/opt/python3.*/bin/autosubsync "$all_Parameters"
 else
     #last_3_Paramets=$(echo "$all_parameters" | rev | cut -d ' ' -f1-3 | rev)
-    #echo "last_3_Paramets: $last_3_Paramets"
+    #echo -e "\nlast_3_Paramets: $last_3_Paramets"
 
     others_Paramets=$(echo "$all_Parameters" | rev | cut -d ' ' -f4- | rev)
-    echo "others_Paramets: $others_Paramets"
+    echo -e "\nothers_Paramets: $others_Paramets"
 
     # Add the current directory, $PWD, to the 3 last parameters
     video_file=$PWD/${@: -3:1} # Third last parameter
