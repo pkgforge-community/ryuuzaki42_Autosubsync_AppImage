@@ -37,7 +37,7 @@ jobs:
         ./"$fileName" --appimage-extract
         ls -lah
 
-    - name: Install maestral and update pip
+    - name: Install Autosubsync and update pip
       run: |
         set -x
         cd squashfs-root/opt/python3*/bin/
@@ -72,7 +72,10 @@ jobs:
         mv python*.desktop Autosubsync.desktop
         cat Autosubsync.desktop
 
-        sed -i "s/Name = Maestral/Name = Maestral-$version_Maestral/" Autosubsync.desktop
+        sed -i "s/Name*/Name = Autosubsync-$version_Maestral/" Autosubsync.desktop
+
+        sed -i "s/Icon=python/Icon=Autosubsync.png/" Autosubsync.desktop
+
         #mv maestral.desktop Maestral.desktop
         #cat Maestral.desktop
 
