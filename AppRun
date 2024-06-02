@@ -5,7 +5,7 @@ count_Paramets=$#
 echo -e "\ncount_Paramets $count_Paramets"
 
 all_Parameters=$@
-echo -e "all_parameters $all_Parameters\n"
+echo -e "all_Parameters $all_Parameters\n"
 
 if [ $count_Paramets -lt 3 ]; then
     "$HERE"/opt/python3.*/bin/autosubsync "$all_Parameters"
@@ -16,21 +16,13 @@ else
     others_Paramets=$(echo "$all_Parameters" | rev | cut -d ' ' -f4- | rev)
     echo "others_Paramets $others_Paramets"
 
-    #last_3_Paramets=$(echo $last_3_Paramets | sed 's/ / $PWD\//g')
-    #echo "last_3_Paramets $last_3_Paramets"
-
-    #echo "-3 ${@: -3:1}"
-    video_file=$PWD/${@: -3:1}
-
-    #echo "-2 ${@: -2:1}"
-    subtitle_file=$PWD/${@: -2:1}
-
-    #echo "-1 ${@: -1:1}"
-    output_file=$PWD/${@: -1:1}
+    # Add the current directory, $PWD, to the 3 last parameters
+    video_file=$PWD/${@: -3:1} # Third last parameter
+    subtitle_file=$PWD/${@: -2:1} # Second last parameter
+    output_file=$PWD/${@: -1:1} # Last parameter
 
     echo "Final Parameters: $others_Paramets $video_file $subtitle_file $output_file"
 
-    exit
     if [ "$others_Paramets" == '' ]; then
         "$HERE"/opt/python3.*/bin/autosubsync "$video_file" "$subtitle_file" "$output_file"
     else
