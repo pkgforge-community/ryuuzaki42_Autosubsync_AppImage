@@ -27,10 +27,6 @@ jobs:
     - name: Get Pyhton AppImage
       run: |
         set -x
-        #wget https://github.com/niess/python-appimage/releases/download/python3.9/python3.9.16-cp39-cp39-manylinux_2_24_x86_64.AppImage
-        #chmod +x python3.9.16-cp39-cp39-manylinux_2_24_x86_64.AppImage
-        #./python3.9.16-cp39-cp39-manylinux_2_24_x86_64.AppImage --appimage-extract
-
         #wget https://github.com/niess/python-appimage/releases/download/python3.11/python3.11.4-cp311-cp311-manylinux_2_28_x86_64.AppImage
         wget https://github.com/ryuuzaki42/Python_to_make_AppImage/releases/download/06/python3.13.3-cp313-cp313-manylinux2014_x86_64.AppImage
         fileName=$(ls python3*.AppImage)
@@ -63,12 +59,23 @@ jobs:
         mv python.png Autosubsync.png
 
         #find . | grep ".desktop"
-        mv python*.desktop Autosubsync.desktop
+        #mv python*.desktop Autosubsync.desktop
+        rm python*.desktop
+
+        echo '[Desktop Entry]
+        Type=Application
+        Name=Autosubsync
+        Exec=Autosubsync
+        Comment=Automatically synchronize subtitles with audio using machine learning
+        Icon=Autosubsync
+        Categories=Utility
+        Terminal=true' > Autosubsync.desktop
+        chmod +x Autosubsync.desktop
         cat Autosubsync.desktop
 
-        sed -i "s/Name=.*/Name=Autosubsync-$version_Autosubsync/" Autosubsync.desktop
-        sed -i "s/Icon=python/Icon=Autosubsync/" Autosubsync.desktop
-        cat Autosubsync.desktop
+        #sed -i "s/Name=.*/Name=Autosubsync-$version_Autosubsync/" Autosubsync.desktop
+        #sed -i "s/Icon=python/Icon=Autosubsync/" Autosubsync.desktop
+        #cat Autosubsync.desktop
 
         pwd; ls -lah
         cd ../
