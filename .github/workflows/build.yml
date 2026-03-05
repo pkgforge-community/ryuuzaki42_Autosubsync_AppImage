@@ -46,7 +46,7 @@ jobs:
     - name: Make AppImage
       run: |
         set -x
-        version_Autosubsync="1.0.1"
+        version="1.0.1"
 
         cd squashfs-root/
         pwd; ls -lah
@@ -70,6 +70,9 @@ jobs:
         Categories=Utility
         Terminal=true' > Autosubsync.desktop
         chmod +x Autosubsync.desktop
+        cat Autosubsync.desktop
+
+        sed -i "s/Name=Autosubsync.*/Name=Autosubsync-$version/" Autosubsync.desktop
         cat Autosubsync.desktop
 
         pwd; ls -lah
