@@ -31,3 +31,4 @@ else
         "$HERE"/opt/python3.*/bin/autosubsync "$others_Paramets" "$video_file" "$subtitle_file" "$output_file"
     fi
 fi
+echo
