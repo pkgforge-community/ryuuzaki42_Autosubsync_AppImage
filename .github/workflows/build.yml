@@ -45,9 +45,9 @@ jobs:
 
     - name: Make AppImage
       run: |
+        set -x
         version_Autosubsync="1.0.1"
 
-        set -x
         cd squashfs-root/
         pwd; ls -lah
 
@@ -59,7 +59,6 @@ jobs:
         mv python.png Autosubsync.png
 
         #find . | grep ".desktop"
-        #mv python*.desktop Autosubsync.desktop
         rm python*.desktop
 
         echo '[Desktop Entry]
@@ -72,10 +71,6 @@ jobs:
         Terminal=true' > Autosubsync.desktop
         chmod +x Autosubsync.desktop
         cat Autosubsync.desktop
-
-        #sed -i "s/Name=.*/Name=Autosubsync-$version_Autosubsync/" Autosubsync.desktop
-        #sed -i "s/Icon=python/Icon=Autosubsync/" Autosubsync.desktop
-        #cat Autosubsync.desktop
 
         pwd; ls -lah
         cd ../
