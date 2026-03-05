@@ -19,9 +19,10 @@ jobs:
     - name: Get appimagetool
       run: |
         set -x
-        wget https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage
+        #wget https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage
+        wget https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage
         chmod +x appimagetool-x86_64.AppImage
-        ls -lah
+        pwd; ls -lah
 
     - name: Get Pyhton AppImage
       run: |
@@ -35,14 +36,13 @@ jobs:
         fileName=$(ls python3*.AppImage)
         chmod +x "$fileName"
         ./"$fileName" --appimage-extract
-        ls -lah
+        pwd; ls -lah
 
     - name: Install Autosubsync and update pip
       run: |
         set -x
         cd squashfs-root/opt/python3*/bin/
-        pwd
-        ls -lah
+        pwd; ls -lah
 
         ./pip3.* install autosubsync
         ./python3.* -m pip install --upgrade pip
@@ -53,8 +53,7 @@ jobs:
 
         set -x
         cd squashfs-root/
-        pwd
-        ls -lah
+        pwd; ls -lah
 
         #rm -v python* .DirIcon AppRun
         rm -v .DirIcon AppRun
@@ -71,9 +70,7 @@ jobs:
         sed -i "s/Icon=python/Icon=Autosubsync/" Autosubsync.desktop
         cat Autosubsync.desktop
 
-        pwd
-        ls -lah
-
+        pwd; ls -lah
         cd ../
         mv AppRun squashfs-root/
 
@@ -81,18 +78,14 @@ jobs:
         ls -lah squashfs-root/
 
         ARCH=x86_64 ./appimagetool-x86_64.AppImage squashfs-root/
-        ls -lah
-        
+        pwd; ls -lah
+
         fileName=$(ls Autosubsync*.AppImage)
         echo "fileName: $fileName"
         fileNameNew=$(echo "$fileName" | sed 's/.AppImage//')
         mv "$fileName" "${fileNameNew}-1_JB.AppImage"
         md5sum "${fileNameNew}-1_JB.AppImage" > "${fileNameNew}-1_JB.AppImage.md5"
-        ls -lah
-
-    # Build - Error: Resource not accessible by integration
-    # Change Settings -> Actions -> General -> Workflow Permissions to allow read and write:
-    # https://github.com/actions/first-interaction/issues/10#issuecomment-1506118886
+        pwd; ls -lah
 
     # https://github.com/marketplace/actions/upload-to-github-release
     - uses: xresloader/upload-to-github-release@main
